@@ -1,14 +1,15 @@
 {% include 'pokemons/partials/head.html' %}
 <body>
-    <header class="main-header-conteiner">
-        <div class="main-header conteiner">
-            <h1>
-                <a href="/">
-                    <span class="iconify" data-icon="mdi:pokeball"></span> 
-                    <span>{{ name }}</span>
-                </a>
-            </h1>
+    {% include 'pokemons/partials/header.html' %}
+
+    <div class="search-conteiner">
+        <div class="conteiner">
+            <form  action="" class="search-form">
+                <input type="search" class="search-input" name="search">
+                <button type="submit" class="search_button"><i class="fas fa-search"></i></button>
+            </form>
         </div>
-    </header>
+
+    </div>
 </body>
 </html>
