@@ -1,15 +1,51 @@
 {% include 'pokemons/partials/head.html' %}
 <body>
     {% include 'pokemons/partials/header.html' %}
+    {%include 'pokemons/partials/search.html'%}
 
-    <div class="search-conteiner">
-        <div class="conteiner">
-            <form  action="" class="search-form">
-                <input type="search" class="search-input" name="search">
-                <button type="submit" class="search_button"><i class="fas fa-search"></i></button>
-            </form>
+    <main class="main-content-conteiner">
+        <div class="main-content main-content-list conteiner">
+            <div class="pok pok-list-item">
+                <div class="pok-cover">
+                    <img src="https://via.placeholder.com/1280x720.png/4d86c4" alt="Temporario">
+                </div>
+                <div class="pok-name-conteiner">
+                    <div class="pok-name">Lorem ipsum dolor sit amet.</div>
+
+                    <div class="recipe-author">
+                        <span class="recipe-author-item">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="recipe-author-item">
+                            <i class="fas fa-calendar-alt"></i>
+                        </span>
+                        <span class="recipe-author-item">
+                            <a href="/recipes/category/cafe-da-manha/">
+                                <i class="fas fa-layer-group"></i>
+                                <span>tipo</span>
+                            </a>
+                        </span>
+                    </div>
+
+                    <div class="poke-content">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat dolorum deleniti, doloribus excepturi, vel amet ipsam laudantium nostrum quae maiores est nihil aperiam magni error mollitia velit sequi. Adipisci, eos.</p>
+                    </div>
+                     <div class="poke-meta-conteiner">
+                         <div class="poke-meta pok-rarity">
+                             <h3 class="pok-meta-title"><span class="iconify main-logo-icon" data-icon="mdi:pokeball"></span> Raridade</h3>
+                             <div class="pok-meta-text">
+                                 mitico
+                             </div>
+                        <div class="poke-meta pok-alternative-form"></div>
+                         </div>
+                     </div>
+
+
+
+                </div>
+            </div>
         </div>
-
-    </div>
+    </main>
+    
 </body>
 </html>
