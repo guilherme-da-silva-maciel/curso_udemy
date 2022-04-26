@@ -1,17 +1,9 @@
-{% include 'pokemons/partials/head.html' %}
-<body>
-    {% include 'pokemons/partials/header.html' %}
-    {%include 'pokemons/partials/search.html'%}
+{% extends 'global/base.html' %}
 
-    <main class="main-content-conteiner">
-        <div class="main-content main-content-list conteiner">
-            {%include 'pokemons/partials/poke_card.html'%}
-            {%include 'pokemons/partials/poke_card.html'%}
-            {%include 'pokemons/partials/poke_card.html'%}
-            {%include 'pokemons/partials/poke_card.html'%}
-            {%include 'pokemons/partials/poke_card.html'%}
-        </div>
-    </main>
-    {%include 'pokemons/partials/footer.html'%}    
-</body>
-</html>
+{% block content %}
+<div class="main-content main-content-list conteiner">
+    {% for pokemon in  pokemons  %}
+        {%include 'pokemons/partials/poke_card.html'%}
+    {% endfor %}
+</div>
+{% endblock content %}

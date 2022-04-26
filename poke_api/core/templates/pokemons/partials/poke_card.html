@@ -1,16 +1,24 @@
         <div class="pok pok-list-item">
             <div class="pok-cover">
-                <img src="https://via.placeholder.com/1280x720.png/4d86c4" alt="Temporario">
+            <a href="{% url 'pokedex:pokemon' pokemon.id %}">
+                <img src="{{ pokemon.cover.url }}"alt="Temporario">
+            </a>
             </div>
             <div class="pok-name-conteiner">
-                <div class="pok-name">Lorem ipsum dolor sit amet.</div>
+            <h5 class="pok-name">
+                <a href="{% url 'pokedex:pokemon' pokemon.id %}">
+                    <div class="pok-name">{{ pokemon.name }}</div>
+                </a>
+            </h5>
 
                 <div class="recipe-author">
                     <span class="recipe-author-item">
                         <i class="fas fa-user"></i>
+                        {{ pokemon.hunter.first_name }}
                     </span>
                     <span class="recipe-author-item">
                         <i class="fas fa-calendar-alt"></i>
+                        {{ pokemon.created_at|date:"d/m/Y" }} às {{ pokemon.created_at|date:"H:i" }}
                     </span>
                     <span class="recipe-author-item">
                         <a href="/recipes/category/cafe-da-manha/">
@@ -21,7 +29,7 @@
                 </div>
 
                 <div class="poke-content">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat dolorum deleniti, doloribus excepturi, vel amet ipsam laudantium nostrum quae maiores est nihil aperiam magni error mollitia velit sequi. Adipisci, eos.</p>
+                    <p>{{ pokemon.description }}</p>
                 </div>
                 <div class="poke-meta-conteiner">
                     <div class="poke-meta pok-rarity">
@@ -37,11 +45,20 @@
                         </div>
                     </div>                                               
                 </div>
-                <footer class="recipe-footer">
-                    <a class="recipe-read-more button button-dark button-full-width" href="/poke/3/">
-                        <i class="fas fa-eye"></i>
-                        <span>ver mais...</span>
-                    </a>
-                </footer>
+            {% if is_detail_page is not True %}
+                    <footer class="recipe-footer">
+                        <a class="recipe-read-more button button-dark button-full-width" href="{% url 'pokedex:pokemon' pokemon.id %}">
+                            <i class="fas fa-eye"></i>
+                            <span>ver mais...</span>
+                        </a>
+                    </footer>
+            {% endif %}
+            
+            {% if is_detail_page is True %}
+            <div class="base-stats">
+                {{ pokemon.base_stats|linebreaks }}
+            </div>
+            {% endif %} 
+
             </div>
         </div>

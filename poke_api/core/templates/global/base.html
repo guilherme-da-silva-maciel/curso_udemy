@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'pokemons/partials/head.html' %}
+    <title>{% block title %}{% endblock title %} Pokemon</title>
+
+</head>
+
+
+<body>
+    {% include 'pokemons/partials/header.html' %}
+    {%include 'pokemons/partials/search.html'%}
+
+    <main class="main-content-conteiner">
+        <div class="main-content main-content-list conteiner">
+            {% block content %}{% endblock content %}
+        </div>
+    </main>
+    {%include 'pokemons/partials/footer.html'%}    
+</body>
+</html>
