@@ -1,3 +1,4 @@
+        
         <div class="pok pok-list-item">
             <div class="pok-cover">
             <a href="{% url 'pokedex:pokemon' pokemon.id %}">
@@ -10,22 +11,33 @@
                     <div class="pok-name">{{ pokemon.name }}</div>
                 </a>
             </h5>
-
+                {% if pokemon.hunter.first_name %}
                 <div class="recipe-author">
                     <span class="recipe-author-item">
                         <i class="fas fa-user"></i>
                         {{ pokemon.hunter.first_name }}
                     </span>
+                {% else %}
+                    {{ pokemon.hunter.username }}
+                {% endif %}
                     <span class="recipe-author-item">
                         <i class="fas fa-calendar-alt"></i>
                         {{ pokemon.created_at|date:"d/m/Y" }} às {{ pokemon.created_at|date:"H:i" }}
                     </span>
-                    <span class="recipe-author-item">
-                        <a href="/recipes/category/cafe-da-manha/">
-                            <i class="fas fa-layer-group"></i>
-                            <span>tipo</span>
-                        </a>
-                    </span>
+                    {% if pokemon.tipo is not None %}
+                        <span class="recipe-author-item">
+                            <a href="{% url 'pokedex:tipo' pokemon.tipo.id%}">
+                                <i class="fas fa-layer-group"></i>
+                               {% if tipo_2 is True %}
+                                    <span>{{ pokemon.tipo.tipo }}-{{ pokemon.tipo_2.tipo_2 }}}</span>
+                                    {% else %}
+                                        <span>{{ pokemon.tipo.tipo }}</span>
+                                {% endif %}    
+                                
+                               
+                            </a>
+                        </span>
+                    {% endif %}
                 </div>
 
                 <div class="poke-content">
@@ -35,13 +47,13 @@
                     <div class="poke-meta pok-rarity">
                         <h3 class="poke-meta-title">Raridade</h3>
                         <div class="poke-meta-text">
-                            mitico
+                            {{ pokemon.rarity }}
                         </div>
                     </div>
                     <div class="poke-meta pok-alternativr-form">
                         <h3 class="poke-meta-title"><i class="pksymbol pksymbol-form-mega2"></i> mega forma</h3>
                         <div class="poke-meta-text">
-                            sim
+                            {{ pokemon.mega_form }}
                         </div>
                     </div>                                               
                 </div>
@@ -56,7 +68,8 @@
             
             {% if is_detail_page is True %}
             <div class="base-stats">
-                {{ pokemon.base_stats|linebreaks }}
+                <a href="{% url 'pokedex:pokemon' pokemon.id %}">
+                    <img class="base-stats-img" src="{{ pokemon.base_stats.url }}"alt="Temporario">
             </div>
             {% endif %} 
 

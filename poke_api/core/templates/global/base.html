@@ -11,11 +11,13 @@
     {% include 'pokemons/partials/header.html' %}
     {%include 'pokemons/partials/search.html'%}
 
-    <main class="main-content-conteiner">
-        <div class="main-content main-content-list conteiner">
+    <main class="main-content-conteiner main-content-pok-list">
+        {% comment %} <div class="main-content main-content-list conteiner"> {% endcomment %}
             {% block content %}{% endblock content %}
         </div>
+        <div class="futer">
+        {%include 'pokemons/partials/footer.html'%}    
+    </div>
     </main>
-    {%include 'pokemons/partials/footer.html'%}    
 </body>
 </html>
