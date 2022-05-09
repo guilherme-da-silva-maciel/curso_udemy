@@ -47,6 +47,9 @@
 padding: 0;
 margin: 0;
 box-sizing: border-box;
+
+/* scrollbar */
+overflow-x: hidden;
 }
 
 html {
@@ -69,18 +72,23 @@ h6{
 font-family: var(--font-headings);
 }
 
-.pok img{
-    max-width: 35rem;
-} 
-
 .conteiner{
 max-width: 144rem;
 margin: 0 auto;
 padding: var(--spacing-gutter-medium);
 }
+.futer{
+    width: 100vw;
+}
 
 .main-header-conteiner{
 background: var(--color-primary-dark)
+}
+.main-content-pok-list{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .main-logo{
@@ -152,6 +160,7 @@ color: var(--color-primary);
 
 .main-content{
 padding-top: 0;
+text-align: center;
 }
 
 .main-content-list{
@@ -169,12 +178,21 @@ border-radius: 1.2rem;
 }
 
 .pok img{
-max-width: 35rem;
-
+    height: 40rem;
+    width: 35rem;
+    display: flex;
+    margin: auto;
 }
 
 .pok-list-item{
-max-width: 64rem;
+    height: fit-content;
+    display: inline-flex;
+    flex-direction: column;
+    max-width: 35rem;
+    margin: 10px;
+}
+.pok .pok-list-item{
+    width: 65rem;
 }
 
 .pok-list-item:hover{
@@ -182,14 +200,16 @@ transform: scale(1.02);
 box-shadow: -8px 8px 18px rgba(0,0,0,.25);
 }
 
-.recipe-title-conteiner{
-padding: var(--spacing-gutter-medium);
-padding-bottom: 2rem
-}
 
+
+.pok-name-conteiner a {
+    text-decoration: none;
+    color: var(--color-primary-dark);
+
+}
 .recipe-author{
 padding: 0 var(--spacing-gutter-medium);
-margin-left: 0 auto;
+
 }
 
 .poke-content{
@@ -198,7 +218,6 @@ padding-top: 2rem
 }
 .recipe-author-item{
 color: var(--color-gray-4);
-margin-right: 1rem;
 }
 
 .recipe-author-item a {
@@ -242,13 +261,40 @@ transition: all 300ms ease-in-out;
 filter: brightness(2);
 }
 
+.main-content-detail .pok-list-item{
+    max-width: 84rem;
+    margin: 0 auto;
+}
+
+.main-content-detail .pok-list-item:hover{
+    transform: scale(1);
+    box-shadow: -5px 5px 15px rgba(0,0,0,0.2);
+    }
+
+.base-stats{
+    padding: var(--spacing-gutter-medium);
+    /* overflow-x: scroll; */
+}
+.base-stats-img{
+    width: auto !important;
+    height: 200px !important;
+
+}
+/* .pok-list-item:nth-child(4){
+    max-width: 200px !important;
+    width: 2000px !important;
+} */
+
 .main-footer{
 display: flex;
-align-items: center;
+/* align-items: center; */
 justify-content: space-between;
 background: var(--color-primary-dark);
 color: var(--color-white);
 padding: var(--spacing-gutter-large);
+}
+.developer{
+    margin-right: auto;
 }
 
 .main-footer a{
@@ -259,4 +305,3 @@ transition: all 300ms ease-in-out;
 .main-footer a:hover{
 filter: brightness(.8);
 }
-

@@ -1,6 +1,6 @@
 <div class="search-conteiner">
     <div class="conteiner">
-        <form  action="{% url 'pokedex:search' %}" method="GET" class="search-form">
+        <form  action="{% url 'pokedex:search'  %}" method="GET" class="search-form">
             <input type="search" class="search-input" name="q" value="{{ search_term }}" required>
             <button type="submit" class="search_button"><i class="fas fa-search"></i></button>
         </form>

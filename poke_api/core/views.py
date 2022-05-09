@@ -1,8 +1,9 @@
+from unicodedata import name
 from django import http
 from django.http import Http404
 from django.shortcuts import render,get_list_or_404,get_object_or_404
-from .utils.pokemons.factory import make_pokemons
-from .models import Pokedex, Tipo
+from .models import Pokedex
+from django.db.models import Q
 
 def home(request):
     pokemons = Pokedex.objects.filter(is_published=True)
@@ -26,19 +27,19 @@ def poke(request,id):
     })
 
 def search(request):
-    search_term = request.GET.get()
+    search_term = request.GET.get('q','').strip()
 
     if not search_term:
         raise Http404()
 
-    pokemon = Pokedex.objects.filter(
-        name__icontains=search_term
-    )
+    pokemons = Pokedex.objects.filter(name=search_term)
+        
+    
 
-    return render(request,'pokemons/partials/search_pok.html',{
+    return render(request,'pokemons/pages/search.html',{
         'page_title' : f'Search for {search_term}',
         'search_term' : search_term,
-        'name' : pokemon
+        'recipes' : pokemons,
     })
     
 
