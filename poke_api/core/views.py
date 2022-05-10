@@ -1,12 +1,17 @@
 from unicodedata import name
 from django import http
 from django.http import Http404
-from django.shortcuts import render,get_list_or_404,get_object_or_404
+from django.shortcuts import render,get_list_or_404
 from .models import Pokedex
 from django.db.models import Q
+from django.contrib import messages
+
 
 def home(request):
     pokemons = Pokedex.objects.filter(is_published=True)
+
+    messages.success(request,'otimo trabalho')
+
     return render(request,'pokemons/pages/home.html',context={
         'pokemons' : pokemons
     })
@@ -32,7 +37,12 @@ def search(request):
     if not search_term:
         raise Http404()
 
-    pokemons = Pokedex.objects.filter(name=search_term)
+    pokemons = Pokedex.objects.filter(
+        Q(
+            Q(name__icontains=search_term)
+        ),
+        is_published=True
+    ).order_by('-id')
         
     
 

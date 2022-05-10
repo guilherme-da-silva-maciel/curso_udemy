@@ -1,0 +1,7 @@
+{% if pokemons.has_other_pages %}
+        {% for page in pagination_range.pagination  %}
+            <div class=" pagination">
+                {{ page }}
+            </div>
+        {% endfor %}
+{% endif %}

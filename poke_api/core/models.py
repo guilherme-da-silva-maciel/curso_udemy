@@ -1,6 +1,7 @@
 from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import CharField
 
 class Tipo(models.Model) :
     tipo = models.CharField(max_length=65)
@@ -31,4 +32,10 @@ class Pokedex(models.Model) :
         return self.name
 
 
+
+class User(models.Model):
+    nome = models.CharField(max_length=25)
+    sobrenome = models.CharField(max_length=35)
+    senha = models.CharField(max_length=70)
+    email = models.CharField(max_length=50)
 # Create your models here.
