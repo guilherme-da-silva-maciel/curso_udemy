@@ -1,0 +1,16 @@
+from django import forms
+from core.models import Pokedex
+from authors.utils.django_form import add_attr
+
+
+class AuthorRecipeForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        add_attr(self.fields.get('cover'), 'class', 'span-2')
+
+
+class AuthorPokemonForm(forms.ModelForm):
+    class Meta:
+        model = Pokedex
+        fields = ['name','desciption','rarity','mega_form','base_stats','base_stats_is_html','cover','tipo','tipo_2']

@@ -1,0 +1,13 @@
+{% extends 'global/base.html' %}
+{% block title %}Login | {% endblock title %}
+{% block content %}
+  <div class="main-content center container">
+    <h2>Login</h2>
+    {% include 'global/login_message.html' %}
+  </div>
+
+  {% include 'global/messages.html' %}
+  {% if not user.is_authenticated %}
+    {% include 'global/form.html' %}
+  {% endif %}
+{% endblock content %}
