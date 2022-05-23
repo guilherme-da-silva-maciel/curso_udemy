@@ -105,11 +105,75 @@ def dashboard_pokemon_edit(request,id):
 
     form = AuthorPokemonForm(
         request.POST or None,
+        files= request.FILES or None,
         instance=pokemon
     )
+
+
+    if form.is_valid():
+        pokemon = form.save(commit=False)
+
+        pokemon.hunter = request.user
+        pokemon.base_stats_is_html = False
+        pokemon.is_published = False
+
+        pokemon.save()
+
+        messages.success(request,'your pokemon add for pokedex')
+
+        return redirect(reverse('authors:dash_edit',args=(id,)))
+
 
     return render(request,'pages/dashboard_pokemon.html',context={
         'form' : form
     })
-# Crea
+
+
+@login_required(login_url='authors:login', redirect_field_name='next')
+def dashboard_pokemon_new(request):
+    form = AuthorPokemonForm(
+        data=request.POST or None,
+        files=request.FILES or None,
+    )
+
+    if form.is_valid():
+        pokemon = form.save(commit=False)
+
+        pokemon.hunter = request.user
+        pokemon.base_stats_steps_is_html = False
+        pokemon.is_published = False
+
+        pokemon.save()
+
+        messages.success(request, 'Salvo com sucesso!')
+        return redirect(
+            reverse('authors:dash_edit', args=(pokemon.id,))
+        )
+
+    return render(
+        request,
+        'pages/dashboard_pokemon.html',
+        context={
+            'form': form,
+            'form_action': reverse('authors:dashboard_pokemon_new')
+        }
+    )
+
+
+@login_required(login_url='authors:login',redirect_field_name='next')
+def dashboard_pokemon_delete(request,id):
+    pokemon = Pokedex.objects.filter(
+        is_published=False,
+        hunter=request.user,
+        pk=id
+    ).first()
+
+    if not pokemon:
+        raise Http404
+
+    pokemon.delete()
+    messages.success(request,'Deleted sucessfully')
+    return redirect(reverse('authors:dashboard'))
+
+
 # Create your views here.

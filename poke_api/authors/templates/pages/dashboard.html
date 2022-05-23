@@ -13,7 +13,10 @@
       <ul>
         {% for pokemon in pokemons  %}
           <li>
-            <a href="{% url 'authors:dash_edit' pokemon.id %}">{{ pokemon.name }}</a>
+            <a href="{% url 'authors:dash_edit' pokemon.id %}">{{ pokemon.name }}</a>-
+            <form action="{% url 'authors:dash_delete' pokemon.id %}" class="inline-form form-delete" method="POST"> {% csrf_token %}
+              <button type="submit" class='plaintext-button'>❌</button>
+            </form>
           </li>
         {% empty %}
           <li>

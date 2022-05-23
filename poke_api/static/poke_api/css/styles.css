@@ -390,3 +390,7 @@
         text-align: left;
     }
       
+    a{
+        color: var(--color-primary);
+        text-decoration: none;
+    }
