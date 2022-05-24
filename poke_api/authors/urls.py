@@ -14,5 +14,4 @@ urlpatterns = [
     path('dashboard/pokemon/<int:id>/edit/',views.dashboard_pokemon_edit,name='dash_edit'),
     path('dashboard/pokemon/new',views.dashboard_pokemon_new,name='dashboard_pokemon_new'),
     path('dashboard/pokemon/<int:id>/delete/',views.dashboard_pokemon_delete,name='dash_delete')
-
 ]

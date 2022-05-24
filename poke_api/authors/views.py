@@ -162,6 +162,7 @@ def dashboard_pokemon_new(request):
 
 @login_required(login_url='authors:login',redirect_field_name='next')
 def dashboard_pokemon_delete(request,id):
+
     pokemon = Pokedex.objects.filter(
         is_published=False,
         hunter=request.user,
