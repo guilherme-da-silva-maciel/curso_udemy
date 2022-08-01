@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,7 @@
     {% include 'pokemons/partials/menu.html' %}
     {% include 'pokemons/partials/header.html' %}
     {%include 'pokemons/partials/search.html'%}
+    <script src="{% static '/js/scripts.js' %}"></script>
 
     <main class="main-content-conteiner main-content-pok-list">
         {% comment %} <div class="main-content main-content-list conteiner"> {% endcomment %}

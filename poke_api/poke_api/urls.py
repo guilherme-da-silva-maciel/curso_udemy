@@ -23,9 +23,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('core.urls')),
     path('authors/',include('authors.urls')),
+    path(r'o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    
     
     
 ]
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

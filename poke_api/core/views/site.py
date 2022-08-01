@@ -1,10 +1,12 @@
 from unicodedata import name
 from django import http
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import render,get_list_or_404
-from .models import Pokedex
+from ..models import Pokedex
 from django.db.models import Q
 from django.contrib import messages
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 
 def home(request):
@@ -52,5 +54,8 @@ def search(request):
         'recipes' : pokemons,
     })
     
+
+
+
 
 # Create your views here.

@@ -1,7 +1,13 @@
 from email.policy import default
+from django import views
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import CharField
+from django.contrib.auth.models import AbstractUser,BaseUserManager
+
+class Pokedexmanager(BaseUserManager):
+    def get_published(self):
+        return self.filter(is_published=True).order_by('-id')
 
 class Tipo(models.Model) :
     tipo = models.CharField(max_length=65)
@@ -14,6 +20,7 @@ class Tipo_2(models.Model):
         return self.tipo_2
 
 class Pokedex(models.Model) :
+    objects = Pokedexmanager()
     name = models.CharField(max_length=65)
     desciption = models.CharField(max_length=165)
     slug = models.SlugField()
